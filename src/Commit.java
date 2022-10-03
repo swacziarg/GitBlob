@@ -1,5 +1,7 @@
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -15,14 +17,13 @@ public class Commit {
 	private String summary = "";
 	private String author = "";
 	private String date = "";
-//	private String pTree = "";
 	private String fileName = "";
 	private String contents = "";
 	private File f;
-	private Tree pTree = new Tree(new ArrayList<String>());
+	private Tree pTree;
 	
-	public Commit(String treeValue, String summaryInput, String authorInput, Commit parentPointer) throws NoSuchAlgorithmException, IOException {
-		
+	public Commit(String summaryInput, String authorInput, Commit parentPointer) throws NoSuchAlgorithmException, IOException {
+		//yucky erik code
 		summary = summaryInput;
 		author = authorInput;
 		String temp = "";
@@ -34,18 +35,30 @@ public class Commit {
 		else {
 			setParent(null);
 		}
-		
-		if(treeValue == null) {
-			pTree = null;
-		}
-		
 		contents = summary+getDate()+author+temp;
 		fileName = shaCreator(contents);
 		
 		f = new File(".\\objects\\"+fileName);
 		writeFile();
+		
+		//yummy simon code
+		File index = new File("index");
+		ArrayList<String> reader = new ArrayList<String>();
+		BufferedReader fr = new BufferedReader(new FileReader(index));
+		while (fr.ready()) {
+			reader.add("blob : " + fr.readLine());
+		}
+		fr.close();
+		reader.add("tree : " + parentPointer);
+		pTree = new Tree(reader);
+		
+		
+		
 	}
 	
+	public String getTreeLoc() {
+		return "s";
+	}
 	public void setParent(Commit input) {
 		parent = input;
 	}
