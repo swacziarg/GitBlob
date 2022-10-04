@@ -36,8 +36,7 @@ public class Commit {
 		else {
 			setParent(null);
 		}
-		contents = summary+getDate()+author+temp;
-		fileName = shaCreator(contents);
+		
 		
 		
 		//yummy simon code
@@ -45,10 +44,11 @@ public class Commit {
 		ArrayList<String> reader = new ArrayList<String>();
 		BufferedReader fr = new BufferedReader(new FileReader(index));
 		while (fr.ready()) {
-			reader.add("blob : " + fr.readLine() +"\n");
+			reader.add("blob : " + fr.readLine());
 		}
+		
 		fr.close();
-		reader.add("tree : " + parentPointer);
+
 		pTree = new Tree(reader);
 		
 		writeFile();
@@ -72,26 +72,32 @@ public class Commit {
 	}
 	
 	public String getName() {
-		return ".\\objects\\"+fileName;
+		return "objects\\"+fileName;
 	}
-	
+	public String getTreeLoc() {
+		return "objects\\"+pTree.getTreeName();
+	}
+	public String getWritten() {
+		return contents;
+	}
 	public void writeFile() throws IOException {
 		String pT = "";
 		String pa = "";
 		String ch = "";
 		if(pTree!=null)
-			pT = ".\\objects\\"+pTree.getTreeName();
+			pT = "objects\\"+pTree.getTreeName();
 		if(parent!=null)
-			pa = parent.getName();
-		if(child!=null)
-			pa = parent.getName();
+			pa = "tree : " + parent.getTreeLoc();
 		
-		String fileConts = (pTree.toString()+"tree : "+pT+"\n"+pa+"\n"+ch+"\n"+author+"\n"+getDate()+"\n"+summary);
-		File f = new File(".\\objects\\"+fileName);
+		
+		String fileConts = (pTree.toString()+"\ntree : "+pT+"\n"+pa+"\n"+ch+"\n"+author+"\n"+getDate()+"\n"+summary);
+		fileName = shaCreator(fileConts);
+		File f = new File("objects\\"+fileName);
+		contents = fileConts;
 		BufferedWriter w = new BufferedWriter(new FileWriter(f));
 		w.write(fileConts);
 		w.close();
-		//clears index
+		//clears index 
 		PrintWriter pw = new PrintWriter("index");
 		pw.close();
 

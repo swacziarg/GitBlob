@@ -33,6 +33,7 @@ public class Tree {
 		}
 
 		SHA1str = "";
+		
 		makeSHA1(listString);
 		createFile();
 		
@@ -42,6 +43,7 @@ public class Tree {
 		return SHA1str;
 	}
 	public String toString() {
+//		System.out.print(listString + "THIS IS THE TOSTRING\n");
     	return listString;
     }
 	public void makeSHA1(String x) throws NoSuchAlgorithmException
@@ -56,13 +58,10 @@ public class Tree {
 	
 	public void createFile() throws FileNotFoundException
 	{
-		Path p = Paths.get("objects\\" + SHA1str);
-        try {
-            Files.writeString(p, listString, StandardCharsets.ISO_8859_1);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+		
+		PrintWriter writer = new PrintWriter (new File ("objects\\" + SHA1str));
+		writer.print(listString);
+		writer.close();
     
 	}
 }
