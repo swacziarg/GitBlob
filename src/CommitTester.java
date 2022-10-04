@@ -1,4 +1,4 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*; 
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 
 class CommitTester {
 
-//	@BeforeAll
-//	static void setUpBeforeClass() throws Exception {
-//		
-//	}
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+		
+	}
 
 	@Test
 	static void cTest() throws NoSuchAlgorithmException, IOException {

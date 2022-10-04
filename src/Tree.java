@@ -24,13 +24,16 @@ public class Tree {
 		int i;
 		listString="";
 		for(i = 0;i < input.size() ;i++) {
-		    listString += input.get(i) + "\n";
+			if (i<input.size()-1) {
+				listString += input.get(i) + "\n";
+			}
+			else {
+				listString += input.get(i);
+			}
 		}
-//		File folder = new File("objects"); 
-//		folder.mkdir();
+
 		SHA1str = "";
 		makeSHA1(listString);
-//		System.out.println(SHA1str);
 		createFile();
 		
 	}
