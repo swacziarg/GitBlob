@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 
 class CommitTester {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-		
-	}
+//	@BeforeAll
+//	static void setUpBeforeClass() throws Exception {
+//		
+//	}
 
 	@Test
 	static void cTest() throws NoSuchAlgorithmException, IOException {
@@ -22,9 +22,9 @@ class CommitTester {
 		Commit com4 = new Commit("test4", "simon",com3);
 
 	}
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
+//	@AfterAll
+//	static void tearDownAfterClass() throws Exception {
+//	}
 
 
 }

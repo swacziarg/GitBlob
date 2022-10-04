@@ -15,7 +15,7 @@ public class Index {
 	public Index() throws IOException {
 		File folder = new File("objects");
 		folder.mkdir();
-		File newIndex = new File("index.txt");
+		File newIndex = new File("index");
 		newIndex.createNewFile();
 	}
 	
@@ -24,14 +24,14 @@ public class Index {
 //	}
 	
 	public void add(String input) throws IOException {
-		String name = input+".txt";
+		String name = input;
 		Blob blob = new Blob(name);
 		blobs.put(input, blob);
 		updateIndex();
 	}
 
 	public void remove(String input) throws IOException {
-		String name = input+".txt";
+		String name = input;
 		Path p = Paths.get(".\\objects\\"+blobs.get(input).getSha());
 		Files.delete(p);
 		
@@ -43,9 +43,16 @@ public class Index {
 	public void updateIndex() throws IOException {
 //		new FileWriter("index.txt", false).close();
 		FileWriter ike = new FileWriter("index");
-		
+		int c = 0;
 		for(String key : blobs.keySet()) {
-			ike.write("\n"+key+": "+blobs.get(key).getSha());
+			if (c!=0) {
+				ike.write("\n"+key+" : "+blobs.get(key).getSha());
+				
+			}
+			else {
+				ike.write(key+" : "+blobs.get(key).getSha());
+				c++;
+			}
 		}
 		ike.close();
 	}
