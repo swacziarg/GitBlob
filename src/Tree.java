@@ -26,7 +26,7 @@ public class Tree {
 		for(i = 0;i < input.size() ;i++) {
 		    listString += input.get(i) + "\n";
 		}
-//		File folder = new File("objects");
+//		File folder = new File("objects"); 
 //		folder.mkdir();
 		SHA1str = "";
 		makeSHA1(listString);
@@ -38,7 +38,9 @@ public class Tree {
 	public String getTreeName() {
 		return SHA1str;
 	}
-	
+	public String toString() {
+    	return listString;
+    }
 	public void makeSHA1(String x) throws NoSuchAlgorithmException
 	{
 
@@ -57,7 +59,8 @@ public class Tree {
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-	}
+        }
+    
 	}
 }
 

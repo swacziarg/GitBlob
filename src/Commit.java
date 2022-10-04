@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -20,7 +21,7 @@ public class Commit {
 	private String author = "";
 	private String fileName = "";
 	private String contents = "";
-	private Tree pTree;
+	private Tree pTree; 
 	
 	public Commit(String summaryInput, String authorInput, Commit parentPointer) throws NoSuchAlgorithmException, IOException {
 		//yucky erik code
@@ -30,7 +31,7 @@ public class Commit {
 		if(parentPointer!=null) {
 			setParent(parentPointer);
 			parentPointer.setChild(this);
-			temp = parentPointer.getContents();
+			temp = parentPointer.getName();
 		}
 		else {
 			setParent(null);
@@ -70,7 +71,7 @@ public class Commit {
 		return temp;
 	}
 	
-	public String getContents() {
+	public String getName() {
 		return ".\\objects\\"+fileName;
 	}
 	
@@ -81,16 +82,18 @@ public class Commit {
 		if(pTree!=null)
 			pT = ".\\objects\\"+pTree.getTreeName();
 		if(parent!=null)
-			pa = parent.getContents();
+			pa = parent.getName();
 		if(child!=null)
-			pa = parent.getContents();
+			pa = parent.getName();
 		
 		String fileConts = (pTree.toString()+"tree : "+pT+"\n"+pa+"\n"+ch+"\n"+author+"\n"+getDate()+"\n"+summary);
 		File f = new File(".\\objects\\"+fileName);
 		BufferedWriter w = new BufferedWriter(new FileWriter(f));
 		w.write(fileConts);
 		w.close();
-		
+		//clears index
+		PrintWriter pw = new PrintWriter("index");
+		pw.close();
 
 	}
 	

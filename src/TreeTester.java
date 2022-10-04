@@ -12,5 +12,6 @@ public class TreeTester {
 		treeContents.add("tree : bd1ccec139dead5ee0d8c3a0499b42a7d43ac44b");
 		treeContents.add("tree : e7d79898d3342fd15daf6ec36f4cb095b52fd976");
 		Tree t = new Tree(treeContents);
+		System.out.print(t.toString());
 	}
 }

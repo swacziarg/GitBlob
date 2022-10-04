@@ -19,29 +19,29 @@ import org.junit.jupiter.api.Test;
 
 class GitTest {
 	
-//	@BeforeAll
-//	static void setUpBeforeClass() throws Exception{
-//		Path p = Paths.get("testFile1.txt");
-//        try {
-//            Files.writeString(p, "example", StandardCharsets.ISO_8859_1);
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//	}
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception{
+		Path p = Paths.get("testFile1.txt");
+        try {
+            Files.writeString(p, "example", StandardCharsets.ISO_8859_1);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+	}
 //		File testFile1 = new File("GitBlob/testFile1.txt");
 //		PrintWriter out = new PrintWriter(testFile1);
 //		out.print("example");
 //		out.close();
 //	}
-	@Test
-	void test() throws IOException, NoSuchAlgorithmException {
-//		test1();
-//		test2();
-//		testTree();
-		testCommit();
-//		fail("Not yet implemented");
-	}
+//	@Test
+//	void test() throws IOException, NoSuchAlgorithmException {
+////		test1();
+////		test2();
+////		testTree();
+//		testCommit();
+////		fail("Not yet implemented");
+//	}
 	
 	@Test
 	static void testFirst() throws IOException, NoSuchAlgorithmException {
@@ -144,6 +144,7 @@ class GitTest {
 		arr.add(teStr);
 		Tree tesT = new Tree(arr);
 		assertTrue(tesT.getTreeName()==teStr);
+		System.out.print(tesT.toString());
 	}
 	
 	@Test
