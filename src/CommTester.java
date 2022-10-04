@@ -97,13 +97,13 @@ class CommTester {
 
 	
 		
-//		File directory = new File("objects\\");
-//		if (directory.isDirectory()) {
-//	        for (File sub : directory.listFiles()) {
-//	            sub.delete();
-//	        }
-//	    }
-//		directory.delete();
+		File directory = new File("objects\\");
+		if (directory.isDirectory()) {
+	        for (File sub : directory.listFiles()) {
+	            sub.delete();
+	        }
+	    }
+		directory.delete();
 
 	}	
 
