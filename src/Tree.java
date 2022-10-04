@@ -56,7 +56,7 @@ public class Tree {
 	
 	public void createFile() throws FileNotFoundException
 	{
-		Path p = Paths.get(".\\objects\\" + SHA1str);
+		Path p = Paths.get("objects\\" + SHA1str);
         try {
             Files.writeString(p, listString, StandardCharsets.ISO_8859_1);
         } catch (IOException e) {
