@@ -71,6 +71,7 @@ public class Commit {
 		return temp;
 	}
 	
+	
 	public String getName() {
 		return "objects\\"+fileName;
 	}
@@ -102,7 +103,23 @@ public class Commit {
 		pw.close();
 
 	}
-	
+//	public void deleteFile(File fileToDelete) throws IOException {
+//		fileToDelete.delete();
+//		File index = new File("index");
+//		BufferedWriter w = new BufferedWriter(new FileWriter(index));
+//		w.write("*deleted* " + fileToDelete.getName());
+//		w.close();
+//	}
+//	public void editFile(File fileToEdit,String newText) throws IOException {
+//		BufferedWriter wr = new BufferedWriter(new FileWriter(fileToEdit));
+//		wr.write("");
+//		wr.write(newText);
+//		wr.close();
+//		File index = new File("index");
+//		BufferedWriter w = new BufferedWriter(new FileWriter(index));
+//		w.write("*edited* " + fileToEdit.getName());
+//		w.close();
+//	}
 	public static String shaCreator(String in) {
 		try {
 	        // getInstance() method is called with algorithm SHA-1
